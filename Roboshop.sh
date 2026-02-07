@@ -30,32 +30,27 @@ do
        --query 'Reservations[].Instances[].PrivateIpAddress' \
        --output text 
        )
-       RECORD_NAME="$instance.$DOMAIN_NAME" #mangodb.santosh.devopsonline
+       RECORD_NAME="$instance.$DOMAIN_NAME" #mongodb.santoshdevops.online
     fi
         echo "IP Address: $IP"
 
-    aws route53 change-resource-record-sets \
-    --hosted-zone-id "$ZONE_ID" \
-    --change-batch '
-    {
-  "Comment": "updating a record",
-  "Changes": [
-    {
-      "Action": "UPSERT",
-      "ResourceRecordSet": {
-        "Name": "'$RECORD_NAME'",
-        "Type": "'"A"'",
-        "TTL": '1',
-        "ResourceRecords": [
-          {
-            "Value": "'$IP'"
-          }
-        ]
+    
+  aws route53 change-resource-record-sets \
+   --hosted-zone-id $ZONE_ID \
+   --change-batch '{
+     "Changes": [
+      {
+        "Action": "Updating record",
+        "ResourceRecordSet": {
+          "Name": "'$RECORD_NAME'",
+          "Type": "A",
+          "TTL": 1,
+          "ResourceRecords": [
+            { "Value": "'$IP'" }
+          ]
+        }
       }
-    }
-  ]
- }
-'
-
+     ]
+   }'
  echo "Record updated for $instance"
 done 
