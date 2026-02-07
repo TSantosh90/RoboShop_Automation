@@ -3,7 +3,7 @@
 SG_ID="sg-03397cf5cc6b4017f"
 AMI_ID="ami-0220d79f3f480ecf5"
 ZONE_ID="Z03483342NIJJTO7ECL8J"
-DOMIAN_NAME="santoshdevops.online"
+DOMAIN_NAME="santoshdevops.online"
 
 for instance in $@
 do
@@ -30,7 +30,7 @@ do
        --query 'Reservations[].Instances[].PrivateIpAddress' \
        --output text 
        )
-       RECORD_NAME="${instance}.${DOMAIN_NAME}" #mongodb.santoshdevops.online
+       RECORD_NAME="$instance.$DOMAIN_NAME" #mongodb.santoshdevops.online
     fi
         echo "IP Address: $IP"
 
