@@ -10,7 +10,7 @@ do
     --instance-type "t3.micro" \
      --security-group-id $SG_ID \
      --tag_specifications "ResouceType=instance,Tags=[{key=name,Value=$instance}]" \
-     --query 'instances[0].InstanceId' \
+     --query 'Instances[0].InstanceId' \
      --output text )
 
     if [ $instance == "frontend" ]; then
