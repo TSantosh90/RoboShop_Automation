@@ -30,7 +30,7 @@ do
        --query 'Reservations[].Instances[].PrivateIpAddress' \
        --output text 
        )
-       RECORD_NAME="$instance.$DOMAIN_NAME" #mongodb.santoshdevops.online
+       RECORD_NAME="${instance}.${DOMAIN_NAME}" #mongodb.santoshdevops.online
     fi
         echo "IP Address: $IP"
 
